@@ -1,0 +1,53 @@
+﻿@model wpena.lucasian.Models.BancoCuentas
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Banco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.banco.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.banco.nombre)
+        </dd>
+
+    </dl>
+    <h4>Cuentas</h4>
+    <table class="table">
+
+        @if (Model.cuentas.Any())
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.cuenta.nombre)
+                </th>
+            </tr>
+            foreach (var item in Model.cuentas)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>
+                    No se encontraron cuentas asociadas al banco
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
